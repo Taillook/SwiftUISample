@@ -9,6 +9,10 @@
 import Foundation
 
 struct EnvironmentParser {
+    func getEnv() -> [String : String] {
+        return ProcessInfo.processInfo.environment
+    }
+    
     func parse() -> Bool {
         guard let path = Bundle.main.path(forResource: ".env", ofType: nil) else {
             fatalError("Not found: '.env' file. Please create .env file")

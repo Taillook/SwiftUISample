@@ -16,7 +16,12 @@ class EnvironmentParserTests: XCTestCase {
     
     override func tearDown() {
     }
-    
+
+    func testGetEnv() {
+        let result = EnvironmentParser().getEnv()
+        XCTAssertEqual(result.isEmpty, false)
+    }
+
     func testParse() {
         let result = EnvironmentParser().parse()
         XCTAssertEqual(result, true)
