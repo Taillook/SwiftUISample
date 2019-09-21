@@ -31,8 +31,9 @@ class WeatherAPIViewModel: BindableObject {
     }
     
     private func fetchWeather() {
-        
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?APPID=ade6ba106d7dad5e2178fc00335ba35b&zip=150-0002,JP") else {
+        _ = EnvironmentParser().parse()
+        let apiKey = (EnvironmentParser().getEnv()["WEATHER_API_KEY"] ?? "")
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?APPID=" + apiKey + "&zip=150-0002,JP") else {
             fatalError("URL is not correct!")
         }
 
